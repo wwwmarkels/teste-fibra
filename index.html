@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>É Fibra! – Chega de Internet Ruim na Região</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700;800;900&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -14,7 +14,8 @@
   --yellow: #FFD600;
   --dark: #0d0015;
   --white: #ffffff;
-  --green: #25D366;
+  --green: #25D366; 
+  --green2: #1ebe57;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,20 +28,21 @@ body {
   color: #fff;
   overflow-x: hidden;
   cursor: default;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ── ÍCONES SVG DO WHATSAPP ── */
-.wpp-icon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  flex-shrink: 0;
+/* ── ÍCONES EMOJI ── */
+.emoji-icon {
+  font-size: 1.2em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-.wpp-icon-large {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
-  flex-shrink: 0;
+
+.emoji-large {
+  font-size: 32px;
+  line-height: 1;
 }
 
 /* ── ANIMATED BG STRIPES ── */
@@ -57,7 +59,8 @@ body {
   background: var(--yellow);
   color: #000;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 15px; font-weight: 900; letter-spacing: 1px;
+  font-size: clamp(13px, 3vw, 15px); 
+  font-weight: 900; letter-spacing: 1px;
   text-transform: uppercase; padding: 8px 0;
   overflow: hidden; position: relative; z-index: 10;
   white-space: nowrap;
@@ -70,13 +73,15 @@ nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(13,0,21,0.95);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px); 
   border-bottom: 3px solid var(--red);
-  padding: 8px 24px;
+  padding: 10px 24px;
   display: flex; align-items: center; justify-content: space-between;
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  min-height: 70px;
 }
 .nav-logo { 
-  height: clamp(60px, 12vw, 95px); 
+  height: clamp(45px, 10vw, 80px); 
   filter: drop-shadow(0 4px 15px rgba(236,51,48,0.6));
   transition: transform 0.3s ease;
   transform-origin: left center;
@@ -87,27 +92,28 @@ nav {
   background: var(--red);
   color: #fff;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 16px; font-weight: 900; letter-spacing: 1px;
+  font-size: clamp(14px, 3.5vw, 16px); font-weight: 900; letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 10px 24px; border-radius: 50px;
+  padding: 10px 20px; border-radius: 50px;
   text-decoration: none;
   animation: navPulse 2s ease-in-out infinite;
   border: none; cursor: pointer;
   white-space: nowrap;
   display: flex; align-items: center; gap: 8px;
+  min-height: 44px; 
 }
 @keyframes navPulse {
   0%,100% { box-shadow: 0 0 0 0 rgba(236,51,48,0.8); }
-  50% { box-shadow: 0 0 0 12px rgba(236,51,48,0); }
+  50% { box-shadow: 0 0 0 10px rgba(236,51,48,0); }
 }
 
 /* ── HERO ── */
 .hero {
-  min-height: 90vh;
+  min-height: max(85vh, 600px);
   background: linear-gradient(160deg, #1a0028 0%, #2a000a 40%, #0d0015 100%);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding: 40px 20px 70px;
+  padding: 60px 20px 80px;
   position: relative; overflow: hidden;
   text-align: center;
 }
@@ -124,26 +130,28 @@ nav {
   position: relative; z-index: 2;
   background: linear-gradient(90deg, var(--red), var(--purple2));
   color: #fff; font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(14px, 4vw, 18px); font-weight: 900;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 8px 24px; border-radius: 50px;
+  font-size: clamp(12px, 3.5vw, 18px); font-weight: 900;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 8px 20px; border-radius: 50px;
   margin-bottom: 20px; box-shadow: 0 4px 15px rgba(236,51,48,0.4);
   animation: fadeUp 0.7s ease both;
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 6px;
+  line-height: 1.2;
 }
 
 .hero h1 {
   position: relative; z-index: 2;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(40px, 11vw, 90px);
+  font-size: clamp(38px, 11vw, 90px);
   line-height: 0.95; letter-spacing: 2px;
   animation: fadeUp 0.7s ease 0.1s both;
+  width: 100%;
 }
 
 .pain-point-container {
   display: inline-block;
   color: var(--yellow);
-  font-size: clamp(45px, 12vw, 95px);
+  font-size: clamp(40px, 12vw, 95px);
   text-shadow: 0 0 25px rgba(255,214,0,0.5);
   margin-bottom: 5px;
   animation: alertPulse 2.5s infinite ease-in-out;
@@ -158,64 +166,67 @@ nav {
 
 .hero-sub {
   position: relative; z-index: 2;
-  font-size: clamp(16px, 4.5vw, 21px);
+  font-size: clamp(15px, 4vw, 21px);
   font-weight: 800; color: rgba(255,255,255,0.9);
-  max-width: 650px; margin: 15px auto 0; line-height: 1.4;
+  max-width: 650px; margin: 20px auto 0; line-height: 1.5;
   animation: fadeUp 0.7s ease 0.2s both;
 }
 
 .social-proof-stars {
-  position: relative; z-index: 2; margin-top: 20px;
+  position: relative; z-index: 2; margin-top: 25px;
   display: flex; flex-direction: column; align-items: center; gap: 5px;
   animation: fadeUp 0.7s ease 0.3s both;
 }
-.stars { color: var(--yellow); font-size: 20px; letter-spacing: 2px; }
+.stars { color: var(--yellow); font-size: 22px; letter-spacing: 2px; }
 .stars-text { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.7); text-transform: uppercase; }
 
 .hero-btns {
   position: relative; z-index: 2;
-  display: flex; flex-wrap: wrap; gap: 14px;
-  justify-content: center; width: 100%;
-  margin-top: 30px; animation: fadeUp 0.7s ease 0.4s both;
+  display: flex; flex-wrap: wrap; gap: 16px;
+  justify-content: center; width: 100%; max-width: 600px;
+  margin-top: 35px; animation: fadeUp 0.7s ease 0.4s both;
+}
+
+.btn-red, .btn-wa {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(20px, 6vw, 26px); letter-spacing: 1.5px;
+  padding: 16px 30px; border-radius: 60px;
+  text-decoration: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 54px; 
+  flex: 1 1 250px;
+  text-align: center;
 }
 
 .btn-red {
   background: var(--red); color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px; letter-spacing: 2px;
-  padding: 16px 40px; border-radius: 60px;
-  text-decoration: none; border: none; cursor: pointer;
   box-shadow: 0 8px 25px rgba(236,51,48,0.5);
   transition: transform 0.15s, background 0.3s;
-  display: flex; align-items: center; justify-content: center;
 }
 .btn-red:hover { transform: scale(1.05); background: var(--red2); }
 
 .btn-wa {
   background: var(--green); color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px; letter-spacing: 2px;
-  padding: 16px 40px; border-radius: 60px;
-  text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;
   box-shadow: 0 0 0 0 rgba(37,211,102,0.7);
   animation: waPulse 2s ease-in-out infinite 0.5s;
 }
-.btn-wa:hover { transform: scale(1.05); }
+.btn-wa:hover { transform: scale(1.05); background: var(--green2); }
 
 /* ── URGENCY STRIP ── */
 .urgency {
   background: var(--red);
   padding: 18px 15px; text-align: center;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(16px, 4.5vw, 22px); font-weight: 900;
+  font-size: clamp(15px, 4.5vw, 22px); font-weight: 900;
   letter-spacing: 1px; text-transform: uppercase;
   position: relative; z-index: 5;
   box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  line-height: 1.4;
 }
 .urgency .urg-hl { color: var(--yellow); text-decoration: underline; }
 #countdown {
   display: inline-block; background: #000; color: var(--yellow);
-  padding: 4px 12px; border-radius: 6px; font-size: clamp(20px, 6vw, 26px);
+  padding: 4px 12px; border-radius: 6px; font-size: clamp(18px, 6vw, 26px);
   margin: 5px 0 0 0; font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px;
   box-shadow: inset 0 0 10px rgba(255,214,0,0.2);
 }
@@ -226,13 +237,13 @@ nav {
   padding: 70px 20px; position: relative; z-index: 1;
 }
 .sec-title { text-align: center; margin-bottom: 40px; }
-.sec-title h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 10vw, 72px); line-height: 1; letter-spacing: 2px; }
+.sec-title h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 10vw, 72px); line-height: 1; letter-spacing: 2px; }
 .sec-title h2 .hl { color: var(--yellow); }
-.sec-title p { font-size: 16px; font-weight: 800; color: rgba(255,255,255,0.6); margin-top: 5px; }
+.sec-title p { font-size: clamp(14px, 4vw, 16px); font-weight: 800; color: rgba(255,255,255,0.6); margin-top: 8px; }
 
 .plans-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px; max-width: 1200px; margin: 0 auto;
+  gap: 24px; max-width: 1200px; margin: 0 auto;
 }
 
 .plan-card {
@@ -260,8 +271,8 @@ nav {
 .card-top.purple-top { background: linear-gradient(135deg, var(--purple) 0%, #2d004a 100%); }
 .card-top.black-top { background: linear-gradient(135deg, #222 0%, #000 100%); }
 
-.speed-num { font-family: 'Bebas Neue', sans-serif; font-size: 80px; line-height: 1; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-.speed-num sup { font-size: 24px; font-family: 'Barlow Condensed', sans-serif; vertical-align: top; margin-top: 10px; display: inline-block; }
+.speed-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(65px, 15vw, 80px); line-height: 1; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.speed-num sup { font-size: clamp(20px, 5vw, 24px); font-family: 'Barlow Condensed', sans-serif; vertical-align: top; margin-top: 10px; display: inline-block; }
 .speed-label { font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-top: -5px; color: var(--yellow);}
 
 .card-body { 
@@ -274,11 +285,11 @@ nav {
 .price-row { display: flex; align-items: baseline; gap: 3px; margin: 0 0 15px; }
 .price-label { font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; font-weight: 900; }
 .price-cur { font-size: 18px; font-weight: 900; color: rgba(255,255,255,0.7); }
-.price-val { font-family: 'Bebas Neue', sans-serif; font-size: 65px; line-height: 1; color: #fff; }
+.price-val { font-family: 'Bebas Neue', sans-serif; font-size: clamp(55px, 12vw, 65px); line-height: 1; color: #fff; }
 .price-cents { font-size: 22px; font-weight: 900; align-self: flex-start; margin-top: 8px; color: rgba(255,255,255,0.9); }
 
 .feat-list { list-style: none; margin-bottom: 25px; flex-grow: 1; }
-.feat-list li { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.85); padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 10px; }
+.feat-list li { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.85); padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 10px; line-height: 1.3; }
 .feat-list li:last-child { border: none; }
 .feat-list li .chk { color: var(--yellow); font-size: 16px; flex-shrink: 0; }
 
@@ -290,14 +301,17 @@ nav {
 
 .card-footer { margin-top: auto; }
 .btn-plan {
-  display: block; width: 100%;
-  background: linear-gradient(90deg, var(--red), var(--purple2)); background-size: 200% 100%;
-  color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px;
-  padding: 18px; border-radius: 12px; text-align: center; text-decoration: none;
-  animation: btnGlow 2.5s ease-in-out infinite; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  display: flex; align-items: center; justify-content: center; gap: 8px;
+  display: flex; width: 100%;
+  background: var(--green);
+  color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1.5px;
+  padding: 16px; border-radius: 12px; text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  align-items: center; justify-content: center; gap: 10px;
+  transition: transform 0.2s;
 }
-.free-tag { text-align: center; margin-top: 12px; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: var(--yellow); animation: freeTagBlink 1.5s step-end infinite; }
+.btn-plan:hover { transform: translateY(-3px); background: var(--green2); }
+
+.free-tag { text-align: center; margin-top: 12px; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: var(--yellow); animation: freeTagBlink 1.5s step-end infinite; }
 
 /* ── REVIEWS ── */
 .reviews { padding: 60px 20px; background: #0a0010; position: relative; z-index: 1; }
@@ -316,51 +330,72 @@ nav {
   display: flex; align-items: center; gap: 12px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.6);
   transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  max-width: calc(100% - 100px); 
+  max-width: calc(100% - 40px); 
 }
-.sales-notification.show { bottom: 24px; }
+.sales-notification.show { bottom: max(24px, env(safe-area-inset-bottom)); }
 .sn-icon { background: var(--green); color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 14px; }
-.sn-icon svg { width: 16px; fill: currentColor; }
 .sn-text { font-size: 12px; font-weight: 800; line-height: 1.3; }
 .sn-text span { color: var(--yellow); }
 
-/* ── RESPONSIVE MOBILE FIRST ── */
-@media(max-width: 600px) {
-  nav { padding: 10px 15px; }
-  .nav-logo { height: clamp(55px, 14vw, 75px); } 
-  .nav-cta { padding: 8px 16px; font-size: 14px; letter-spacing: 0; }
-  
-  .hero { padding: 30px 15px 50px; }
-  .hero-btns { flex-direction: column; width: 100%; }
-  .btn-red, .btn-wa { width: 100%; padding: 20px; font-size: 24px; text-align: center; } 
-  
-  .urgency { font-size: 15px; padding: 15px 10px; }
-  #countdown { display: block; margin: 10px auto 0; font-size: 28px; max-width: 150px; } 
-  
-  .plan-card.hot { transform: none; } 
-  .price-val { font-size: 60px; }
-  
-  .sales-notification { bottom: auto; top: -100px; left: 50%; transform: translateX(-50%); width: 90%; justify-content: center; transition: top 0.5s ease; }
-  .sales-notification.show { top: 80px; bottom: auto; }
-}
-
 /* ── FLOATING WA ── */
 .float-wa {
-  position: fixed; bottom: 20px; right: 20px; z-index: 999;
-  width: 65px; height: 65px; border-radius: 50%;
+  position: fixed; 
+  bottom: max(20px, env(safe-area-inset-bottom)); 
+  right: 20px; z-index: 999;
+  width: 60px; height: 60px; border-radius: 50%;
   background: var(--green); display: flex; align-items: center; justify-content: center; color: white;
   text-decoration: none; animation: floatWa 2s ease-in-out infinite;
   box-shadow: 0 4px 20px rgba(37,211,102,0.6);
 }
 @keyframes floatWa { 0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 50% { box-shadow: 0 0 0 16px rgba(37,211,102,0); } }
 
-/* FOOTER LOGO REDUZIDA */
-footer { background: #0a0010; border-top: 2px solid rgba(236,51,48,0.3); padding: 32px 20px; text-align: center; }
-footer img { height: auto; max-height: 45px; opacity: 0.85; margin: 0 auto; display: block; }
+/* FOOTER */
+footer { background: #0a0010; border-top: 2px solid rgba(236,51,48,0.3); padding: 40px 20px max(40px, env(safe-area-inset-bottom)); text-align: center; }
+footer img { height: auto; max-height: 40px; opacity: 0.85; margin: 0 auto; display: block; }
 footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); margin-top: 14px; }
 
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.in { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE MOBILE FIRST ── */
+@media(max-width: 768px) {
+  nav { padding: 10px 15px; }
+  .nav-cta { padding: 8px 14px; font-size: 13px; letter-spacing: 0; gap: 6px; }
+  
+  .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
+  .btn-red, .btn-wa { width: 100%; padding: 18px; font-size: 22px; flex: none; } 
+  
+  .urgency { font-size: 14px; padding: 15px 10px; }
+  #countdown { display: block; margin: 8px auto 0; font-size: 24px; max-width: 130px; } 
+  
+  .plan-card.hot { transform: none; } 
+  
+  /* Ajuste das notificações no Mobile para ficar embaixo, logo acima do botão do whatsapp */
+  .sales-notification { 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 90%; 
+    justify-content: center; 
+  }
+  .sales-notification.show { 
+    /* Coloca o balão de vendas um pouco acima do flutuante do WhatsApp (que tem 60px de altura + 20px de margem) */
+    bottom: max(95px, calc(env(safe-area-inset-bottom) + 95px)); 
+  }
+}
+
+@media(max-width: 380px) {
+  /* Proteção para telas muito pequenas */
+  .hero h1 { font-size: 34px; }
+  .pain-point-container { font-size: 36px; }
+  .speed-num { font-size: 55px; }
+  .price-val { font-size: 50px; }
+  .nav-cta span { display: none; } 
+  .nav-cta::after { content: "FALAR AGORA"; font-size: 12px; margin-left: 4px;}
+  
+  /* Ajuste fino na notificação de vendas para telas bem apertadas */
+  .sales-notification { padding: 8px 15px; }
+  .sn-text { font-size: 11px; }
+}
 </style>
 </head>
 <body>
@@ -369,15 +404,13 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
 
 <!-- FAKE SALES NOTIFICATION -->
 <div class="sales-notification" id="salesNotification">
-  <div class="sn-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.6 0-66.5-9-95.2-26.1l-6.8-4-70.8 18.6 18.9-69.1-4.4-7C45.3 294.6 35.5 259.9 35.5 224c0-103.8 84.4-188.4 188.5-188.4 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 104-84.4 188.6-188.5 188.6zm102.6-140.2c-5.6-2.8-33.3-16.4-38.5-18.3-5.2-1.9-9-2.8-12.8 2.8-3.8 5.6-14.5 18.3-17.8 22.1-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.7-8.8-45.2-28.1-16.7-15-28-33.6-31.3-39.2-3.3-5.6-.4-8.6 2.4-11.4 2.5-2.5 5.6-6.6 8.4-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-5-12.7-5.6-11.3-24.3-54.6-33.3-74.8-8.8-19.6-17.7-16.9-24.3-17.2-6.1-.2-13.1-.2-19.8-.2-6.6 0-17.3 2.5-26.4 12.7-9.4 10.3-35.7 34.9-35.7 85 0 50.1 36.6 98.6 41.7 105.4 5.2 6.6 71.9 109.8 174.1 154 24.3 10.6 43.3 16.9 58.1 21.6 24.4 7.8 46.6 6.7 64.2 4.1 19.6-2.9 60.3-24.6 68.8-48.4 8.5-23.7 8.5-44.1 6.1-48.4-2.5-4.2-9-6.6-14.6-9.4z"/></svg>
-  </div>
+  <div class="sn-icon">🎉</div>
   <div class="sn-text" id="snText">Alguém acabou de assinar...</div>
 </div>
 
-<!-- FLOATING WA WITH ICON -->
+<!-- FLOATING WA COM EMOJI -->
 <a href="https://wa.me/5515998542920?text=Oi!%20Vim%20pelo%20site%20e%20quero%20falar%20com%20um%20atendente!" class="float-wa" target="_blank">
-  <svg class="wpp-icon-large" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.6 0-66.5-9-95.2-26.1l-6.8-4-70.8 18.6 18.9-69.1-4.4-7C45.3 294.6 35.5 259.9 35.5 224c0-103.8 84.4-188.4 188.5-188.4 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 104-84.4 188.6-188.5 188.6zm102.6-140.2c-5.6-2.8-33.3-16.4-38.5-18.3-5.2-1.9-9-2.8-12.8 2.8-3.8 5.6-14.5 18.3-17.8 22.1-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.7-8.8-45.2-28.1-16.7-15-28-33.6-31.3-39.2-3.3-5.6-.4-8.6 2.4-11.4 2.5-2.5 5.6-6.6 8.4-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-5-12.7-5.6-11.3-24.3-54.6-33.3-74.8-8.8-19.6-17.7-16.9-24.3-17.2-6.1-.2-13.1-.2-19.8-.2-6.6 0-17.3 2.5-26.4 12.7-9.4 10.3-35.7 34.9-35.7 85 0 50.1 36.6 98.6 41.7 105.4 5.2 6.6 71.9 109.8 174.1 154 24.3 10.6 43.3 16.9 58.1 21.6 24.4 7.8 46.6 6.7 64.2 4.1 19.6-2.9 60.3-24.6 68.8-48.4 8.5-23.7 8.5-44.1 6.1-48.4-2.5-4.2-9-6.6-14.6-9.4z"/></svg>
+  <span class="emoji-large">💬</span>
 </a>
 
 <div class="ticker">
@@ -389,14 +422,14 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
 <nav>
   <img src="https://i.ibb.co/YBQpfzPD/LOGO-FIBRA.png" alt="É Fibra!" class="nav-logo" onerror="this.style.display='none'">
   <a href="https://wa.me/5515998542920?text=Oi!%20Quero%20falar%20com%20um%20atendente." class="nav-cta" target="_blank">
-    <svg class="wpp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.6 0-66.5-9-95.2-26.1l-6.8-4-70.8 18.6 18.9-69.1-4.4-7C45.3 294.6 35.5 259.9 35.5 224c0-103.8 84.4-188.4 188.5-188.4 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 104-84.4 188.6-188.5 188.6zm102.6-140.2c-5.6-2.8-33.3-16.4-38.5-18.3-5.2-1.9-9-2.8-12.8 2.8-3.8 5.6-14.5 18.3-17.8 22.1-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.7-8.8-45.2-28.1-16.7-15-28-33.6-31.3-39.2-3.3-5.6-.4-8.6 2.4-11.4 2.5-2.5 5.6-6.6 8.4-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-5-12.7-5.6-11.3-24.3-54.6-33.3-74.8-8.8-19.6-17.7-16.9-24.3-17.2-6.1-.2-13.1-.2-19.8-.2-6.6 0-17.3 2.5-26.4 12.7-9.4 10.3-35.7 34.9-35.7 85 0 50.1 36.6 98.6 41.7 105.4 5.2 6.6 71.9 109.8 174.1 154 24.3 10.6 43.3 16.9 58.1 21.6 24.4 7.8 46.6 6.7 64.2 4.1 19.6-2.9 60.3-24.6 68.8-48.4 8.5-23.7 8.5-44.1 6.1-48.4-2.5-4.2-9-6.6-14.6-9.4z"/></svg>
-    FALAR COM UM ATENDENTE AGORA!
+    <span class="emoji-icon">💬</span>
+    <span>FALAR COM ATENDENTE</span>
   </a>
 </nav>
 
 <section class="hero">
   <div class="hero-eyebrow">
-    <span class="blink"></span> 🚨 OFERTA LIBERADA PARA BOITUVA, CERQUILHO, TATUÍ E IPERÓ 🚨
+    🚨 ATENDIMENTO EM BOITUVA, CERQUILHO, TATUÍ E IPERÓ 🚨
   </div>
 
   <h1>
@@ -415,8 +448,7 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
   <div class="hero-btns">
     <a href="#planos" class="btn-red">VER MEU PLANO AGORA</a>
     <a href="https://wa.me/5515998542920?text=Oi!%20Sua%20p%C3%A1gina%20me%20convenceu,%20quero%20falar%20com%20um%20atendente!" class="btn-wa" target="_blank">
-      <svg class="wpp-icon-large" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.6 0-66.5-9-95.2-26.1l-6.8-4-70.8 18.6 18.9-69.1-4.4-7C45.3 294.6 35.5 259.9 35.5 224c0-103.8 84.4-188.4 188.5-188.4 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 104-84.4 188.6-188.5 188.6zm102.6-140.2c-5.6-2.8-33.3-16.4-38.5-18.3-5.2-1.9-9-2.8-12.8 2.8-3.8 5.6-14.5 18.3-17.8 22.1-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.7-8.8-45.2-28.1-16.7-15-28-33.6-31.3-39.2-3.3-5.6-.4-8.6 2.4-11.4 2.5-2.5 5.6-6.6 8.4-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-5-12.7-5.6-11.3-24.3-54.6-33.3-74.8-8.8-19.6-17.7-16.9-24.3-17.2-6.1-.2-13.1-.2-19.8-.2-6.6 0-17.3 2.5-26.4 12.7-9.4 10.3-35.7 34.9-35.7 85 0 50.1 36.6 98.6 41.7 105.4 5.2 6.6 71.9 109.8 174.1 154 24.3 10.6 43.3 16.9 58.1 21.6 24.4 7.8 46.6 6.7 64.2 4.1 19.6-2.9 60.3-24.6 68.8-48.4 8.5-23.7 8.5-44.1 6.1-48.4-2.5-4.2-9-6.6-14.6-9.4z"/></svg>
-      FALAR COM UM ATENDENTE AGORA!
+      <span class="emoji-icon">💬</span> FALAR COM UM ATENDENTE!
     </a>
   </div>
 </section>
@@ -448,8 +480,7 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
         </ul>
         <div class="card-footer">
           <a href="https://wa.me/5515998542920?text=Quero%20falar%20com%20um%20atendente%20sobre%20o%20plano%20de%20300MB." class="btn-plan" target="_blank">
-            <svg class="wpp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.6 0-66.5-9-95.2-26.1l-6.8-4-70.8 18.6 18.9-69.1-4.4-7C45.3 294.6 35.5 259.9 35.5 224c0-103.8 84.4-188.4 188.5-188.4 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 104-84.4 188.6-188.5 188.6zm102.6-140.2c-5.6-2.8-33.3-16.4-38.5-18.3-5.2-1.9-9-2.8-12.8 2.8-3.8 5.6-14.5 18.3-17.8 22.1-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.7-8.8-45.2-28.1-16.7-15-28-33.6-31.3-39.2-3.3-5.6-.4-8.6 2.4-11.4 2.5-2.5 5.6-6.6 8.4-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-5-12.7-5.6-11.3-24.3-54.6-33.3-74.8-8.8-19.6-17.7-16.9-24.3-17.2-6.1-.2-13.1-.2-19.8-.2-6.6 0-17.3 2.5-26.4 12.7-9.4 10.3-35.7 34.9-35.7 85 0 50.1 36.6 98.6 41.7 105.4 5.2 6.6 71.9 109.8 174.1 154 24.3 10.6 43.3 16.9 58.1 21.6 24.4 7.8 46.6 6.7 64.2 4.1 19.6-2.9 60.3-24.6 68.8-48.4 8.5-23.7 8.5-44.1 6.1-48.4-2.5-4.2-9-6.6-14.6-9.4z"/></svg>
-            CONTRATAR AGORA
+            <span class="emoji-icon">📲</span> CONTRATAR AGORA
           </a>
           <p class="free-tag">ÚLTIMAS VAGAS GRÁTIS</p>
         </div>
@@ -476,8 +507,7 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
         </ul>
         <div class="card-footer">
           <a href="https://wa.me/5515998542920?text=Quero%20falar%20com%20um%20atendente%20sobre%20o%20plano%20de%20500MB." class="btn-plan" target="_blank">
-            <svg class="wpp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.6 0-66.5-9-95.2-26.1l-6.8-4-70.8 18.6 18.9-69.1-4.4-7C45.3 294.6 35.5 259.9 35.5 224c0-103.8 84.4-188.4 188.5-188.4 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 104-84.4 188.6-188.5 188.6zm102.6-140.2c-5.6-2.8-33.3-16.4-38.5-18.3-5.2-1.9-9-2.8-12.8 2.8-3.8 5.6-14.5 18.3-17.8 22.1-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.7-8.8-45.2-28.1-16.7-15-28-33.6-31.3-39.2-3.3-5.6-.4-8.6 2.4-11.4 2.5-2.5 5.6-6.6 8.4-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-5-12.7-5.6-11.3-24.3-54.6-33.3-74.8-8.8-19.6-17.7-16.9-24.3-17.2-6.1-.2-13.1-.2-19.8-.2-6.6 0-17.3 2.5-26.4 12.7-9.4 10.3-35.7 34.9-35.7 85 0 50.1 36.6 98.6 41.7 105.4 5.2 6.6 71.9 109.8 174.1 154 24.3 10.6 43.3 16.9 58.1 21.6 24.4 7.8 46.6 6.7 64.2 4.1 19.6-2.9 60.3-24.6 68.8-48.4 8.5-23.7 8.5-44.1 6.1-48.4-2.5-4.2-9-6.6-14.6-9.4z"/></svg>
-            CONTRATAR AGORA
+            <span class="emoji-icon">📲</span> CONTRATAR AGORA
           </a>
           <p class="free-tag">ÚLTIMAS VAGAS GRÁTIS</p>
         </div>
@@ -503,8 +533,7 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
         </ul>
         <div class="card-footer">
           <a href="https://wa.me/5515998542920?text=Quero%20falar%20com%20um%20atendente%20sobre%20o%20plano%20de%20700MB." class="btn-plan" target="_blank">
-            <svg class="wpp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.6 0-66.5-9-95.2-26.1l-6.8-4-70.8 18.6 18.9-69.1-4.4-7C45.3 294.6 35.5 259.9 35.5 224c0-103.8 84.4-188.4 188.5-188.4 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 104-84.4 188.6-188.5 188.6zm102.6-140.2c-5.6-2.8-33.3-16.4-38.5-18.3-5.2-1.9-9-2.8-12.8 2.8-3.8 5.6-14.5 18.3-17.8 22.1-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.7-8.8-45.2-28.1-16.7-15-28-33.6-31.3-39.2-3.3-5.6-.4-8.6 2.4-11.4 2.5-2.5 5.6-6.6 8.4-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-5-12.7-5.6-11.3-24.3-54.6-33.3-74.8-8.8-19.6-17.7-16.9-24.3-17.2-6.1-.2-13.1-.2-19.8-.2-6.6 0-17.3 2.5-26.4 12.7-9.4 10.3-35.7 34.9-35.7 85 0 50.1 36.6 98.6 41.7 105.4 5.2 6.6 71.9 109.8 174.1 154 24.3 10.6 43.3 16.9 58.1 21.6 24.4 7.8 46.6 6.7 64.2 4.1 19.6-2.9 60.3-24.6 68.8-48.4 8.5-23.7 8.5-44.1 6.1-48.4-2.5-4.2-9-6.6-14.6-9.4z"/></svg>
-            CONTRATAR AGORA
+            <span class="emoji-icon">📲</span> CONTRATAR AGORA
           </a>
           <p class="free-tag">ÚLTIMAS VAGAS GRÁTIS</p>
         </div>
@@ -531,8 +560,7 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
         </ul>
         <div class="card-footer">
           <a href="https://wa.me/5515998542920?text=Quero%20falar%20com%20um%20atendente%20sobre%20o%20plano%20M%C3%A1ximo%20de%20900MB." class="btn-plan" target="_blank">
-            <svg class="wpp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 413.6c-33.6 0-66.5-9-95.2-26.1l-6.8-4-70.8 18.6 18.9-69.1-4.4-7C45.3 294.6 35.5 259.9 35.5 224c0-103.8 84.4-188.4 188.5-188.4 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 104-84.4 188.6-188.5 188.6zm102.6-140.2c-5.6-2.8-33.3-16.4-38.5-18.3-5.2-1.9-9-2.8-12.8 2.8-3.8 5.6-14.5 18.3-17.8 22.1-3.3 3.8-6.6 4.2-12.2 1.4-5.6-2.8-23.7-8.8-45.2-28.1-16.7-15-28-33.6-31.3-39.2-3.3-5.6-.4-8.6 2.4-11.4 2.5-2.5 5.6-6.6 8.4-9.9 2.8-3.3 3.8-5.6 5.6-9.4 1.9-3.8.9-7-5-12.7-5.6-11.3-24.3-54.6-33.3-74.8-8.8-19.6-17.7-16.9-24.3-17.2-6.1-.2-13.1-.2-19.8-.2-6.6 0-17.3 2.5-26.4 12.7-9.4 10.3-35.7 34.9-35.7 85 0 50.1 36.6 98.6 41.7 105.4 5.2 6.6 71.9 109.8 174.1 154 24.3 10.6 43.3 16.9 58.1 21.6 24.4 7.8 46.6 6.7 64.2 4.1 19.6-2.9 60.3-24.6 68.8-48.4 8.5-23.7 8.5-44.1 6.1-48.4-2.5-4.2-9-6.6-14.6-9.4z"/></svg>
-            CONTRATAR AGORA
+            <span class="emoji-icon">📲</span> CONTRATAR AGORA
           </a>
           <p class="free-tag">ÚLTIMAS VAGAS GRÁTIS</p>
         </div>
