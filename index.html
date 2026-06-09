@@ -76,12 +76,14 @@ nav {
   -webkit-backdrop-filter: blur(14px); 
   border-bottom: 3px solid var(--red);
   padding: 10px 24px;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   min-height: 70px;
 }
 .nav-logo { 
-  height: clamp(45px, 10vw, 80px); 
+  height: clamp(40px, 10vw, 50px); 
+  max-width: 45vw; 
+  object-fit: contain;
   filter: drop-shadow(0 4px 15px rgba(236,51,48,0.6));
   transition: transform 0.3s ease;
   transform-origin: left center;
@@ -92,15 +94,16 @@ nav {
   background: var(--red);
   color: #fff;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(14px, 3.5vw, 16px); font-weight: 900; letter-spacing: 1px;
+  font-size: clamp(13px, 3.5vw, 16px); font-weight: 900; letter-spacing: 1px;
   text-transform: uppercase;
   padding: 10px 20px; border-radius: 50px;
   text-decoration: none;
   animation: navPulse 2s ease-in-out infinite;
   border: none; cursor: pointer;
-  white-space: nowrap;
+  white-space: nowrap; /* Impede quebra de linha no botão do nav */
   display: flex; align-items: center; gap: 8px;
   min-height: 44px; 
+  flex-shrink: 0;
 }
 @keyframes navPulse {
   0%,100% { box-shadow: 0 0 0 0 rgba(236,51,48,0.8); }
@@ -135,7 +138,7 @@ nav {
   padding: 8px 20px; border-radius: 50px;
   margin-bottom: 20px; box-shadow: 0 4px 15px rgba(236,51,48,0.4);
   animation: fadeUp 0.7s ease both;
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   line-height: 1.2;
 }
 
@@ -178,7 +181,7 @@ nav {
   animation: fadeUp 0.7s ease 0.3s both;
 }
 .stars { color: var(--yellow); font-size: 22px; letter-spacing: 2px; }
-.stars-text { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+.stars-text { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.7); text-transform: uppercase; text-align: center; }
 
 .hero-btns {
   position: relative; z-index: 2;
@@ -189,13 +192,14 @@ nav {
 
 .btn-red, .btn-wa {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(20px, 6vw, 26px); letter-spacing: 1.5px;
-  padding: 16px 30px; border-radius: 60px;
+  font-size: clamp(18px, 5vw, 24px); letter-spacing: 1.5px;
+  padding: 16px 24px; border-radius: 60px;
   text-decoration: none; border: none; cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 54px; 
   flex: 1 1 250px;
   text-align: center;
+  white-space: nowrap; /* Impede quebra de texto */
 }
 
 .btn-red {
@@ -242,7 +246,7 @@ nav {
 .sec-title p { font-size: clamp(14px, 4vw, 16px); font-weight: 800; color: rgba(255,255,255,0.6); margin-top: 8px; }
 
 .plans-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 24px; max-width: 1200px; margin: 0 auto;
 }
 
@@ -271,7 +275,7 @@ nav {
 .card-top.purple-top { background: linear-gradient(135deg, var(--purple) 0%, #2d004a 100%); }
 .card-top.black-top { background: linear-gradient(135deg, #222 0%, #000 100%); }
 
-.speed-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(65px, 15vw, 80px); line-height: 1; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.speed-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 14vw, 80px); line-height: 1; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
 .speed-num sup { font-size: clamp(20px, 5vw, 24px); font-family: 'Barlow Condensed', sans-serif; vertical-align: top; margin-top: 10px; display: inline-block; }
 .speed-label { font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-top: -5px; color: var(--yellow);}
 
@@ -285,7 +289,7 @@ nav {
 .price-row { display: flex; align-items: baseline; gap: 3px; margin: 0 0 15px; }
 .price-label { font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; font-weight: 900; }
 .price-cur { font-size: 18px; font-weight: 900; color: rgba(255,255,255,0.7); }
-.price-val { font-family: 'Bebas Neue', sans-serif; font-size: clamp(55px, 12vw, 65px); line-height: 1; color: #fff; }
+.price-val { font-family: 'Bebas Neue', sans-serif; font-size: clamp(50px, 12vw, 65px); line-height: 1; color: #fff; }
 .price-cents { font-size: 22px; font-weight: 900; align-self: flex-start; margin-top: 8px; color: rgba(255,255,255,0.9); }
 
 .feat-list { list-style: none; margin-bottom: 25px; flex-grow: 1; }
@@ -300,14 +304,20 @@ nav {
 .app-globoplay { background: #FF004E; }
 
 .card-footer { margin-top: auto; }
+
+/* FIX ALINHAMENTO DO BOTÃO: nowrap + tamanho de fonte responsivo */
 .btn-plan {
   display: flex; width: 100%;
   background: var(--green);
-  color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1.5px;
-  padding: 16px; border-radius: 12px; text-decoration: none;
+  color: #fff; font-family: 'Bebas Neue', sans-serif; 
+  font-size: clamp(18px, 4vw, 24px); /* Evita estourar o container */
+  letter-spacing: 1.5px;
+  padding: 14px 10px; /* Padding reduzido para acomodar o texto */
+  border-radius: 12px; text-decoration: none;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  align-items: center; justify-content: center; gap: 10px;
+  align-items: center; justify-content: center; gap: 8px;
   transition: transform 0.2s;
+  white-space: nowrap; /* MANTÉM O TEXTO EM 1 LINHA SEMPRE */
 }
 .btn-plan:hover { transform: translateY(-3px); background: var(--green2); }
 
@@ -351,7 +361,7 @@ nav {
 
 /* FOOTER */
 footer { background: #0a0010; border-top: 2px solid rgba(236,51,48,0.3); padding: 40px 20px max(40px, env(safe-area-inset-bottom)); text-align: center; }
-footer img { height: auto; max-height: 40px; opacity: 0.85; margin: 0 auto; display: block; }
+footer img { height: auto; max-height: 45px; max-width: 80%; opacity: 0.9; margin: 0 auto; display: block; object-fit: contain; }
 footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); margin-top: 14px; }
 
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -360,17 +370,17 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
 /* ── RESPONSIVE MOBILE FIRST ── */
 @media(max-width: 768px) {
   nav { padding: 10px 15px; }
-  .nav-cta { padding: 8px 14px; font-size: 13px; letter-spacing: 0; gap: 6px; }
+  .nav-logo { height: 38px; } 
+  .nav-cta { padding: 8px 14px; font-size: 12px; letter-spacing: 0; gap: 6px; }
   
   .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
-  .btn-red, .btn-wa { width: 100%; padding: 18px; font-size: 22px; flex: none; } 
+  .btn-red, .btn-wa { width: 100%; padding: 18px; font-size: 20px; flex: none; } 
   
   .urgency { font-size: 14px; padding: 15px 10px; }
   #countdown { display: block; margin: 8px auto 0; font-size: 24px; max-width: 130px; } 
   
   .plan-card.hot { transform: none; } 
   
-  /* Ajuste das notificações no Mobile para ficar embaixo, logo acima do botão do whatsapp */
   .sales-notification { 
     left: 50%; 
     transform: translateX(-50%); 
@@ -378,21 +388,17 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
     justify-content: center; 
   }
   .sales-notification.show { 
-    /* Coloca o balão de vendas um pouco acima do flutuante do WhatsApp (que tem 60px de altura + 20px de margem) */
     bottom: max(95px, calc(env(safe-area-inset-bottom) + 95px)); 
   }
 }
 
 @media(max-width: 380px) {
-  /* Proteção para telas muito pequenas */
   .hero h1 { font-size: 34px; }
-  .pain-point-container { font-size: 36px; }
-  .speed-num { font-size: 55px; }
-  .price-val { font-size: 50px; }
+  .pain-point-container { font-size: 34px; }
+  .speed-num { font-size: 50px; }
+  .price-val { font-size: 45px; }
   .nav-cta span { display: none; } 
-  .nav-cta::after { content: "FALAR AGORA"; font-size: 12px; margin-left: 4px;}
-  
-  /* Ajuste fino na notificação de vendas para telas bem apertadas */
+  .nav-cta::after { content: "FALAR AGORA"; font-size: 11px; margin-left: 4px;}
   .sales-notification { padding: 8px 15px; }
   .sn-text { font-size: 11px; }
 }
@@ -420,7 +426,7 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
 </div>
 
 <nav>
-  <img src="https://i.ibb.co/YBQpfzPD/LOGO-FIBRA.png" alt="É Fibra!" class="nav-logo" onerror="this.style.display='none'">
+  <img src="https://i.ibb.co/93WgYdYF/LOGO-FIBRA.png" alt="É Fibra!" class="nav-logo">
   <a href="https://wa.me/5515998542920?text=Oi!%20Quero%20falar%20com%20um%20atendente." class="nav-cta" target="_blank">
     <span class="emoji-icon">💬</span>
     <span>FALAR COM ATENDENTE</span>
@@ -597,7 +603,7 @@ footer p { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); marg
 </section>
 
 <footer>
-  <img src="https://i.ibb.co/YBQpfzPD/LOGO-FIBRA.png" alt="É Fibra!" onerror="this.style.display='none'">
+  <img src="https://i.ibb.co/93WgYdYF/LOGO-FIBRA.png" alt="É Fibra!">
   <p>© 2026 É Fibra! – Sempre Online · Todos os direitos reservados</p>
   <p style="margin-top:6px;">Central de Vendas: (15) 99854-2920</p>
 </footer>
